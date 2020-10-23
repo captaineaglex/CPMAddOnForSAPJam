@@ -1,0 +1,12 @@
+{
+    "name": "sabanciecpm-ui",
+    "dependencies": {
+        "@sap/approuter": "^6.6.0"
+    },
+    "devDependencies": {
+        "mbt": "^1.0.14"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    }
+}

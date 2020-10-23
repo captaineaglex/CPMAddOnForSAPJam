@@ -1,0 +1,51 @@
+{
+  "name": "sabanciecpm",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/audit-logging": "^3.1.0",
+    "@sap/cds": "^3.34.2",
+    "@sap/hana-client": "^2.4.196",
+    "@sap/hdi-deploy": "^3.11.10",
+    "@sap/xsenv": "^2.2.0",
+    "@sap/xssec": "^2.2.5",
+    "axios": "^0.19.2",
+    "cfenv": "^1.2.2",
+    "express": "^4",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "mbt": "^1.0.14",
+    "sqlite3": "^4.2.0"
+  },
+  "engines": {
+    "node": "^12",
+    "npm": "^6.14.5"
+  },
+  "scripts": {
+    "start": "npx cds run",
+    "build:mta": "cds build/all && mbt build -p=cf"
+  },
+  "cds": {
+    "hana": {
+      "deploy-format": "hdbtable",
+      "syntax": "hdi"
+    },
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "uaa": {
+        "kind": "xsuaa"
+      }
+    },
+    "auth": {
+      "passport": {
+        "strategy": "JWT"
+      }
+    }
+  }
+}

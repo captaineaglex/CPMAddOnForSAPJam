@@ -1,0 +1,5 @@
+---
+applications:
+- name: sabanciecpm-ui
+  path: .
+  memory: 1G

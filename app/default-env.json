@@ -1,0 +1,32 @@
+{
+    "destinations" : [
+        {
+            "name": "srv-binding",
+            "url": "http://localhost:5000",
+            "forwardAuthToken": true
+        }
+    ],
+   
+   
+    "VCAP_SERVICES": {
+        "xsuaa": [
+            {
+                "name": "sabanciecpm-uaa", "label": "xsuaa", "tags": [ "xsuaa" ],
+                "credentials": {
+                    "apiurl": "https://api.authentication.eu10.hana.ondemand.com",
+                    "clientid": "sb-sabanciecpm!t48630",
+                    "clientsecret": "D8b0/7y6Rg5OQ8nefzeCmGuoxlc=",
+                    "identityzone": "sabanciclouddev",
+                    "identityzoneid": "349e83e6-be69-4a29-b8bd-26cbe1f33f78",
+                    "sburl": "https://internal-xsuaa.authentication.eu10.hana.ondemand.com",
+                    "tenantid": "349e83e6-be69-4a29-b8bd-26cbe1f33f78",
+                    "tenantmode": "dedicated",
+                    "uaadomain": "authentication.eu10.hana.ondemand.com",
+                    "url": "https://sabanciclouddev.authentication.eu10.hana.ondemand.com",
+                    "verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuaKvonWyP1ppe3tC/x/5szSCOSvGn6sYYSNNOwcFemV6SZWd1jtuWWPflyaqd7t/TXDk7cLANanX8h1vGLMggevnFWWsRJ0YLYy6i9EEye3OFbrE5N9+IMAtRwg+6DxvjNOuPl4YRUcTBDRUfVeOaUFRmkQjWu173ucd2YUR7UiYLA3AAFl8rPV1mEZpWCy2uc2TWJbFBKPHiuhCw3UOp8k8qrluQ6LKCdNYEbO+YMFc7jrZz59BgM/iAca3BXseCm0gQqAoaG7/A9vvLV+DsDnv2bk1bPL2oVuluZq6s2i2ZApF3rb6BYu8ETx7nbtxrqVCEVM2MOQOoF2xy4urfQIDAQAB-----END PUBLIC KEY-----",
+                    "xsappname": "sabanciecpm!t48630"
+                   }
+            }
+        ]
+    }
+}

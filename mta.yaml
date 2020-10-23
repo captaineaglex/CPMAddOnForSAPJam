@@ -1,0 +1,60 @@
+ID: sabanciecpm
+_schema-version: '3'
+version: 0.0.1
+modules:
+ - name: sabanciecpm-ui
+   type: nodejs
+   path: app
+   parameters:
+    memory: 1G 
+    disk-quota: 1G 
+    routes: 
+     - route: sabanciecpmtest-ui.${default-domain} 
+   requires:
+     - name: sabanciecpm-uaa
+     - name: srv-binding
+       group: destinations
+       properties:
+         forwardAuthToken: true
+         strictSSL: true
+         name: srv-binding
+         url: ~{srv-url}
+ - name: sabanciecpm-db
+   type: hdb
+   path: db
+   build-parameters:
+    ignore: ["node_modules/"]
+   parameters:
+    health-check-type: process
+   requires:
+     - name: sabanciecpm-db-hdi-container 
+ - name: sabanciecpm-srv
+   type: nodejs
+   path: srv
+   build-parameters:
+    ignore: ["node_modules/"]
+   provides:
+    - name: srv-binding
+      properties:
+       srv-url: https://sabanciecpmtest-srv.${default-domain} 
+   parameters:
+    memory: 1G 
+    disk-quota: 1G 
+    routes: 
+     - route: sabanciecpmtest-srv.${default-domain}
+   requires:
+     - name: sabanciecpm-db-hdi-container
+resources:
+ - name: sabanciecpm-db-hdi-container
+   type: com.sap.xs.hdi-container
+   properties:
+    hdi-container-name: '${service-name}'
+ - name: sabanciecpm-uaa
+   type: com.sap.xs.uaa
+   parameters:
+    path: ./.xs-security.json  
+    service: xsuaa    
+    service-plan: application
+    service-keys: 
+     - name: sabanciecpm-uaa-key        
+       
